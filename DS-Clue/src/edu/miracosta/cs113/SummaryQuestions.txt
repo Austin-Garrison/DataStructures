@@ -1,0 +1,20 @@
+RandomClue
+
+How often do you get a solution in fewer than 20 guesses? Does this change depending on the theory you test (1, 2, 3)?
+-- A solution in fewer than 20 guesses was rare for any theory tested. This is because if the numbers are all 1, all 
+the highest number or a random number, it is equally likely to guess it correctly randomly.
+
+What is good or bad about this strategy?
+--The good thing about this strategy is that the numbers don't affect the probability of being correct in less than 20 
+guesses. The bad thing is that it's unlikely to guess correctly in fewer than 20 tries.
+
+
+Detective Jill -- My solution
+How often do you get a solution in fewer than 20 guesses? Does this change depending on the theory you test (1, 2, 3)?
+-- My solution always guesses correctly in 20 guesses or less. This doesn't change based on the theory but for theory 2,
+ it will never be less than 20 guesses. This is because I start from 1 and increment each time the guess is said to be 
+ incorrect.
+ 
+What is good or bad about this strategy?
+The good thing about this strategy is that it is always correct in 20 guesses or less. The bad thing about this strategy
+is that higher theories (6, 10 , 6) will always require more guesses. 
