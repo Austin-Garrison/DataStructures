@@ -19,6 +19,8 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
  
  public E get(int index)
  {   
+   if(head == null || index < 0 || index >= size)
+    throw new IndexOutOfBoundsException();
    ListIterator<E> iter = listIterator(index);
    return iter.next();
  } 
@@ -49,6 +51,32 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
        }
        else {   throw new IndexOutOfBoundsException();  }
        return returnValue;
+ }
+
+ public void clear() {
+   head = null;
+ }
+
+ public int indexOf(Object element)
+  {
+    Node current = head;
+    int listSize = size();
+    for(int i = 0; i < listSize; i++)
+    {
+      if(current.data.equals(element)) return i;
+      current = current.next; 
+    }
+    return -1; }
+
+
+ public int lastIndexOf(Object o) {
+   int lastIndex = -1;
+   for (int i = 0; i < size; i++)
+   {
+     if (o.equals(listIterator(i)))
+      lastIndex = i;
+   }
+    return lastIndex;
  }
  
  public Iterator iterator() { return new ListIter(0);  }
@@ -109,17 +137,32 @@ public class DoubleLinkedList<E> extends AbstractSequentialList<E>
    {  
      return (lastItemReturned != null);  
    }
+
+   public int lastIndexOf(Object o) {
+    return index;
+  }
  
    public int previousIndex() { 
-     return this.index;   
+     return this.index - 1;   
    }
   
-   public int nextIndex() { 
-     return index + 1;   
+   public int nextIndex() {
+     return index + 1;
    }
   
-   public void set(E o)  { }  // not implemented
-   public void remove(){}      // not implemented
+   public void set(E o)  { 
+    if(lastItemReturned == null) {
+      throw new IllegalStateException();
+    }
+    //DoubleLinkedList.this.set(index - 1, o);
+    lastItemReturned.data = o;
+   }
+   public void remove(){
+    if (lastItemReturned == null)
+      throw new IllegalStateException();
+    // DoubleLinkedList.this.remove(index - 1);
+    // index--;
+   }      // not implemented
  
    public E next()
    { 
